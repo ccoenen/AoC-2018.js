@@ -1,11 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// reading the puzzles input data to process it later
-const puzzleInput = fs.readFileSync(path.resolve(__dirname, '../input/day-1.txt'), 'UTF-8');
-// splitting that long string into multiple array entries, converting them to numbers
-const transformations = puzzleInput.split('\n').map(line => parseInt(line, 10));
-
 // ------- Part 1 ------- //
 function finalFrequency(changes) {
 	// our starting point is zero
@@ -56,6 +51,11 @@ function firstDuplicate(changes) {
 }
 
 function run() {
+	// reading the puzzles input data to process it later
+	const puzzleInput = fs.readFileSync(path.resolve(__dirname, '../input/day-01.txt'), 'UTF-8');
+	// splitting that long string into multiple array entries, converting them to numbers
+	const transformations = puzzleInput.split('\n').map(line => parseInt(line, 10));
+
 	console.log('Final Frequency (part 1): %d', finalFrequency(transformations));
 	console.log('First Duplicate (part 2): %d', firstDuplicate(transformations));
 }

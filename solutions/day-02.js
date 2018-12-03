@@ -58,7 +58,7 @@ function common(list) {
 
 function run() {
 	// reading the puzzles input data to process it later
-	const puzzleInput = fs.readFileSync(path.resolve(__dirname, '../input/day-2.txt'), 'UTF-8');
+	const puzzleInput = fs.readFileSync(path.resolve(__dirname, '../input/day-02.txt'), 'UTF-8');
 	// splitting that long string into multiple array entries, converting them to numbers
 	const list = puzzleInput.split('\n');
 
