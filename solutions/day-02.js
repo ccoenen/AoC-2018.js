@@ -21,7 +21,7 @@ function hasTriplets(inputString) {
 function hasSingleCharacterDifference(a, b) {
 	if (a === b) return false;
 
-	for (let i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i += 1) {
 		const a1 = a.slice(0, i) + a.slice(i + 1);
 		const b1 = b.slice(0, i) + b.slice(i + 1);
 		if (a1 === b1) {

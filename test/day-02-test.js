@@ -5,34 +5,34 @@ const d2 = require('../solutions/day-02');
 describe('Day 2', () => {
 	describe('Part 1', () => {
 		it('should count the letters', () => {
-			assert.deepEqual({
+			assert.deepStrictEqual({
 			}, d2.letterCounter(''));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 1, b: 1, c: 1, d: 1, e: 1, f: 1,
 			}, d2.letterCounter('abcdef'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 2, b: 3, c: 1,
 			}, d2.letterCounter('bababc'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 1, b: 2, c: 1, d: 1, e: 1,
 			}, d2.letterCounter('abbcde'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 1, b: 1, c: 3, d: 1,
 			}, d2.letterCounter('abcccd'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 2, b: 1, c: 1, d: 2,
 			}, d2.letterCounter('aabcdd'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 1, b: 1, c: 1, d: 1, e: 2,
 			}, d2.letterCounter('abcdee'));
 
-			assert.deepEqual({
+			assert.deepStrictEqual({
 				a: 3, b: 3,
 			}, d2.letterCounter('ababab'));
 		});
