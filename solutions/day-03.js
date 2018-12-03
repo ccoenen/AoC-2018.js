@@ -15,15 +15,33 @@ function parseLine(input) {
 		w: parseInt(result[4], 10),
 		h: parseInt(result[5], 10),
 		// derived values, easier to work with in some cases:
-		x2: parseInt(result[2], 10) + parseInt(result[4], 10),
-		y2: parseInt(result[3], 10) + parseInt(result[5], 10),
+		x2: parseInt(result[2], 10) + parseInt(result[4], 10) - 1,
+		y2: parseInt(result[3], 10) + parseInt(result[5], 10) - 1,
 	};
 }
 
-function fabricCounter(claims) {
-	const fabric = [];
+function fabricCounter(sizeX, sizeY, claims) {
+	const fabric = new Uint32Array(sizeX * sizeY);
+
 	claims.forEach((claim) => {
+		if (claim.x > sizeX || claim.x2 > sizeX || claim.y > sizeY || claim.y2 > sizeY) {
+			throw new Error(`claim too large for this fabric: ${claim}`);
+		}
+
+		Array.from(Array(claim.w)).forEach((unused1, dx) => {
+			Array.from(Array(claim.h)).forEach((unused2, dy) => {
+				const x = claim.x + dx;
+				const y = claim.y + dy;
+				fabric[y * sizeX + x] += 1;
+			});
+		});
 	});
+
+	return fabric;
+}
+
+function overbookedFields(fabric) {
+	return fabric.filter(element => element > 1);
 }
 
 function run() {
@@ -32,8 +50,8 @@ function run() {
 	// splitting that long string into multiple array entries, converting them to numbers
 	const list = puzzleInput.split('\n').map(parseLine);
 
-	// work in progress
-	console.log(list);
+	const fabric = fabricCounter(1000, 1000, list);
+	console.log('Number of overbooked fields (Part 1): %d', overbookedFields(fabric).length);
 }
 
 if (require.main === module) {
@@ -42,6 +60,7 @@ if (require.main === module) {
 
 module.exports = {
 	fabricCounter,
+	overbookedFields,
 	parseLine,
 	run,
 };
