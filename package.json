@@ -1,0 +1,29 @@
+{
+  "name": "aoc-2018",
+  "version": "1.0.0",
+  "description": "AoC test repo",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha",
+    "eslint": "eslint solutions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccoenen/AoC-2018.js.git"
+  },
+  "author": "Claudius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccoenen/AoC-2018.js/issues"
+  },
+  "homepage": "https://github.com/ccoenen/AoC-2018.js#readme",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0"
+  }
+}
