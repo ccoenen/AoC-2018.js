@@ -63,3 +63,9 @@ function run() {
 if (require.main === module) {
 	run();
 }
+
+// this makes the main functions visible from the outside, so I can test them
+module.exports = {
+	finalFrequency,
+	firstDuplicate,
+};
