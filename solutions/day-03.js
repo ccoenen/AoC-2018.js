@@ -44,6 +44,25 @@ function overbookedFields(fabric) {
 	return fabric.filter(element => element > 1);
 }
 
+function workingClaim(fabric, sizeX, claims) {
+	const workingClaims = claims.filter((claim) => {
+		for (let { x } = claim; x <= claim.x2; x += 1) {
+			for (let { y } = claim; y <= claim.y2; y += 1) {
+				if (fabric[y * sizeX + x] !== 1) {
+					// something overlaps or has not been counted
+					return false;
+				}
+			}
+		}
+
+		// if we made it here, nothing should overlap
+		return true;
+	});
+
+	// after filtering, at least one element should remain
+	return workingClaims[0];
+}
+
 function run() {
 	// reading the puzzles input data to process it later
 	const puzzleInput = fs.readFileSync(path.resolve(__dirname, '../input/day-03.txt'), 'UTF-8');
@@ -52,6 +71,7 @@ function run() {
 
 	const fabric = fabricCounter(1000, 1000, list);
 	console.log('Number of overbooked fields (Part 1): %d', overbookedFields(fabric).length);
+	console.log('Working Claim (Part 2): %j', workingClaim(fabric, 1000, list));
 }
 
 if (require.main === module) {
@@ -62,5 +82,6 @@ module.exports = {
 	fabricCounter,
 	overbookedFields,
 	parseLine,
+	workingClaim,
 	run,
 };

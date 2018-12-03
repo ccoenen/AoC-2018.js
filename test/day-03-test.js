@@ -32,4 +32,19 @@ describe('Day 3', () => {
 			assert.equal(3, d3.overbookedFields(new Uint32Array([0, 0, 1, 1, 3, 4, 1, 0, 3])).length);
 		});
 	});
+
+	describe('Part 2', () => {
+		it('finds non-conflicting claims', () => {
+			const claims = [
+				d3.parseLine('#1 @ 1,3: 4x4'),
+				d3.parseLine('#2 @ 3,1: 4x4'),
+				d3.parseLine('#3 @ 5,5: 2x2'),
+			];
+			const fabric = d3.fabricCounter(8, 8, claims);
+			const workingClaim = d3.workingClaim(fabric, 8, claims);
+			const expectation = claims[2];
+
+			assert.deepStrictEqual(expectation, workingClaim);
+		});
+	});
 });
