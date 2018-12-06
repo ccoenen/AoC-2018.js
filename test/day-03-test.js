@@ -5,9 +5,9 @@ const d3 = require('../solutions/day-03');
 describe('Day 3', () => {
 	describe('Part 1', () => {
 		it('can parse a line of input data', () => {
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d3.parseLine('#1 @ 1,3: 4x4'), {
 				id: 1, x: 1, y: 3, w: 4, h: 4, x2: 4, y2: 6,
-			}, d3.parseLine('#1 @ 1,3: 4x4'));
+			});
 		});
 
 		it('counts claims on a given fabric', () => {
@@ -25,11 +25,11 @@ describe('Day 3', () => {
 				0, 0, 0, 0, 0,
 			]);
 
-			assert.deepEqual(expectation, result);
+			assert.deepEqual(result, expectation);
 		});
 
 		it('counts overbooked fields', () => {
-			assert.equal(3, d3.overbookedFields(new Uint32Array([0, 0, 1, 1, 3, 4, 1, 0, 3])).length);
+			assert.equal(d3.overbookedFields(new Uint32Array([0, 0, 1, 1, 3, 4, 1, 0, 3])).length, 3);
 		});
 	});
 
@@ -44,7 +44,7 @@ describe('Day 3', () => {
 			const workingClaim = d3.workingClaim(fabric, 8, claims);
 			const expectation = claims[2];
 
-			assert.deepStrictEqual(expectation, workingClaim);
+			assert.deepStrictEqual(workingClaim, expectation);
 		});
 	});
 });

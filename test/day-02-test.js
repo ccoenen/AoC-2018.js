@@ -5,36 +5,36 @@ const d2 = require('../solutions/day-02');
 describe('Day 2', () => {
 	describe('Part 1', () => {
 		it('should count the letters', () => {
-			assert.deepStrictEqual({
-			}, d2.letterCounter(''));
+			assert.deepStrictEqual(d2.letterCounter(''), {
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('abcdef'), {
 				a: 1, b: 1, c: 1, d: 1, e: 1, f: 1,
-			}, d2.letterCounter('abcdef'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('bababc'), {
 				a: 2, b: 3, c: 1,
-			}, d2.letterCounter('bababc'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('abbcde'), {
 				a: 1, b: 2, c: 1, d: 1, e: 1,
-			}, d2.letterCounter('abbcde'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('abcccd'), {
 				a: 1, b: 1, c: 3, d: 1,
-			}, d2.letterCounter('abcccd'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('aabcdd'), {
 				a: 2, b: 1, c: 1, d: 2,
-			}, d2.letterCounter('aabcdd'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('abcdee'), {
 				a: 1, b: 1, c: 1, d: 1, e: 2,
-			}, d2.letterCounter('abcdee'));
+			});
 
-			assert.deepStrictEqual({
+			assert.deepStrictEqual(d2.letterCounter('ababab'), {
 				a: 3, b: 3,
-			}, d2.letterCounter('ababab'));
+			});
 		});
 
 		it('should finds twins and triplets', () => {
@@ -65,21 +65,21 @@ describe('Day 2', () => {
 				'abcdee',
 				'ababab',
 			];
-			assert.equal(12, d2.checksum(list));
+			assert.equal(d2.checksum(list), 12);
 		});
 	});
 
 	describe('Part 2', () => {
 		it('finds the hasSingleCharacterDifference', () => {
-			assert.equal('fgij', d2.hasSingleCharacterDifference('fghij', 'fguij'));
+			assert.strictEqual(d2.hasSingleCharacterDifference('fghij', 'fguij'), 'fgij');
 		});
 
 		it('same string has no Single Character Difference', () => {
-			assert.equal(false, d2.hasSingleCharacterDifference('abcde', 'abcde'));
+			assert(!d2.hasSingleCharacterDifference('abcde', 'abcde'));
 		});
 
 		it('completely different string is no single character difference', () => {
-			assert.equal(false, d2.hasSingleCharacterDifference('abcde', 'xyzab'));
+			assert(!d2.hasSingleCharacterDifference('abcde', 'xyzab'));
 		});
 	});
 });
